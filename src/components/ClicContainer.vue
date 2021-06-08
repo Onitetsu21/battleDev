@@ -3,6 +3,8 @@
         <div @click="clic" class="clicScreen">
             <h1>Budget : {{budget}} Radis</h1>
             <h4>radis par clic : {{radisPerClic * multiplicator}}</h4>
+            <h4>Revenus passifs : {{income}}</h4>
+            <h4>Timer : {{timer}}</h4>
             <h4>Tous les investissements :</h4>
             <div  v-for="resource in allResources" :key="resource.index" @click="buyResource(resource.cost), addToMultiplicator(resource.multiplicator), addResource(resource.name)"  >
                 <Resource v-if="displayResource(resource.cost)" :cost="resource.cost" :name="resource.name" :addToClic="resource.addToClick" :obtained="resource.obtained"/>
@@ -121,39 +123,52 @@ export default {
                 },
             ],
             resource: {},
+            income: 30,
+            incomeRate: 10,
+            timer: 0,
         }
     },
-
+    mounted(){this.increaseTimer()},
     methods: {
-        clic(){
-            this.budget += ((parseInt(this.radisPerClic) * parseInt(this.multiplicator)))
-        },
+      clic() {
+        this.budget += ((parseInt(this.radisPerClic) * parseInt(this.multiplicator)))
+      },
 
-        buyResource(cost){
-            this.budget -= (parseInt(cost) + (parseInt(this.radisPerClic) * parseInt(this.multiplicator)))
-        },
+      buyResource(cost) {
+        this.budget -= (parseInt(cost) + (parseInt(this.radisPerClic) * parseInt(this.multiplicator)))
+        this.income += parseInt(this.multiplicator)
+      },
 
-        displayResource(cost){
-            if(this.budget >= parseInt(cost)){
-                return true
-            }else{
-                return false
-            }
-        },
+      displayResource(cost) {
+        if (this.budget >= parseInt(cost)) {
+          return true
+        } else {
+          return false
+        }
+      },
 
-        addResource(name){
-            for(let resource of this.allResources){
-                if(resource.name == name){
-                    resource.obtained ++
-                    console.log(resource.name)
-                }
-            }
-        },
+      addResource(name) {
+        for (let resource of this.allResources) {
+          if (resource.name == name) {
+            resource.obtained++
+            console.log(resource.name)
+          }
+        }
+      },
 
-        addToMultiplicator(nbr){
-            this.multiplicator += nbr
-        },
+      addToMultiplicator(nbr) {
+        this.multiplicator += nbr
+      },
 
+      increaseTimer() {
+        setInterval(() => {
+          this.timer++
+          if (this.timer == this.incomeRate+1) {
+            this.timer = 0
+            this.budget += this.income
+          }
+        }, 1000);
+      },
     },
 
     components: {
