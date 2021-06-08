@@ -4,16 +4,9 @@
             <h1>Budget : {{budget}} Radis</h1>
             <h4>radis par clic : {{radisPerClic * multiplicator}}</h4>
             <h4>Tous les investissements :</h4>
-            <ul>
-                <li v-for="resource in allResources" :key="resource.name" >
-                    <div v-if ="resource.obtained != 0">{{resource.name}} = {{resource.obtained}}</div>
-                </li>
-            </ul>
-
             <div  v-for="resource in allResources" :key="resource.index" @click="buyResource(resource.cost), addToMultiplicator(resource.multiplicator), addResource(resource.name)"  >
                 <Resource v-if="displayResource(resource.cost)" :cost="resource.cost" :name="resource.name" :addToClic="resource.addToClick" :obtained="resource.obtained"/>
             </div>
-
         </div>
     </div>
 </template>
@@ -27,25 +20,6 @@ export default {
             budget : 0,
             multiplicator: 1,
             radisPerClic: 1,
-            userResources : {
-                joueuse : 0,
-                team : 0,
-                trainer : 0,
-                field : 0,
-                teamL3: 0,
-                manager: 0,
-                tribune : 0,
-                teamL2 : 0,
-                sponsor : 0,
-                bestPlayer : 0,
-                stadium : 0,
-                teamL1 : 0,
-                nationalTeam : 0,
-                euro : 0
-            },
-            userResources2 : [
-                
-            ],
             allResources : [
                 {
                     name : "Joueuse",
