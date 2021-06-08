@@ -30,7 +30,15 @@ export default {
 }
 </script>
 <style >
-    .resourcesContent > *{
-        margin: 5px;
-    }
+    .resources {
+    background: rgb(255, 217, 0);
+    padding: 10px;
+}
+.resourcesContent {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 5px;
+    align-items: center;
+}
 </style>
