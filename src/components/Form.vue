@@ -1,9 +1,11 @@
 <template>
   <div>
-    <form action="" method="post">
+
+    <form method="post">
       <input type="text" id="name" v-model="user.name" value="name" required >
 <!--      <input v-model="message" placeholder="edit me">-->
-      <button @click="saveUser">submit</button>
+      <div @click="saveUser">submit</div>
+
     </form>
   </div>
 </template>
