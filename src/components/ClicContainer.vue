@@ -4,10 +4,14 @@
             <h1>Budget : {{budget}} Radis</h1>
             <h4>radis par clic : {{radisPerClic * multiplicator}}</h4>
             <h4>Tous les investissements :</h4>
-            <p>{{userResources[0]}}</p>
+            <ul>
+                <li v-for="resource in allResources" :key="resource.name" >
+                    <div v-if ="resource.obtained != 0">{{resource.name}} = {{resource.obtained}}</div>
+                </li>
+            </ul>
 
-            <div v-for="resource in allResources" :key="resource.name" @click="buyResource(resource.cost), addToMultiplicator(resource.multiplicator)">
-                <Resource v-if="displayResource(resource.cost)" :cost="resource.cost" :name="resource.name" :addToClic="resource.addToClick"/>
+            <div  v-for="resource in allResources" :key="resource.index" @click="buyResource(resource.cost), addToMultiplicator(resource.multiplicator), addResource(resource.name)"  >
+                <Resource v-if="displayResource(resource.cost)" :cost="resource.cost" :name="resource.name" :addToClic="resource.addToClick" :obtained="resource.obtained"/>
             </div>
 
         </div>
@@ -24,94 +28,125 @@ export default {
             multiplicator: 1,
             radisPerClic: 1,
             userResources : {
-                player : 0,
+                joueuse : 0,
+                team : 0,
+                trainer : 0,
+                field : 0,
+                teamL3: 0,
+                manager: 0,
+                tribune : 0,
+                teamL2 : 0,
+                sponsor : 0,
+                bestPlayer : 0,
+                stadium : 0,
+                teamL1 : 0,
+                nationalTeam : 0,
+                euro : 0
             },
+            userResources2 : [
+                
+            ],
             allResources : [
                 {
                     name : "Joueuse",
                     cost : "10",
                     addToClick: "1",
-                    multiplicator : 1
+                    multiplicator : 1,
+                    obtained : 0
                 },
                 {
                     name : "Equipe amatrice",
                     cost : "50",
                     addToClick: "5",
-                    multiplicator : 5
+                    multiplicator : 5,
+                    obtained : 0
                 },
                 {
                     name : "Entraineuse",
                     cost : "100",
                     addToClick: "10",
-                    multiplicator : 10
+                    multiplicator : 10,
+                    obtained : 0
                 },
                 {
                     name : "Terrain de foot",
                     cost : "150",
                     addToClick: "15",
-                    multiplicator : 15
+                    multiplicator : 15,
+                    obtained : 0
                 },
                 {
                     name : "Equipe de L3",
                     cost : "200",
                     addToClick: "20",
-                    multiplicator : 20
+                    multiplicator : 20,
+                    obtained : 0
                 },
                 {
                     name : "Manageuse",
                     cost : "250",
                     addToClick: "25",
-                    multiplicator : 25
+                    multiplicator : 25,
+                    obtained : 0
                 },
                 {
                     name : "Tribune",
                     cost : "300",
                     addToClick: "30",
-                    multiplicator : 30
+                    multiplicator : 30,
+                    obtained : 0
                 },
                 {
                     name : "Equipe de L2",
                     cost : "350",
                     addToClick: "35",
-                    multiplicator : 35
+                    multiplicator : 35,
+                    obtained : 0
                 },
                 {
-                    name : "Sponsors",
+                    name : "Sponsor",
                     cost : "400",
                     addToClick: "40",
-                    multiplicator : 40
+                    multiplicator : 40,
+                    obtained : 0
                 },
                 {
                     name : "Joueuse vedette",
                     cost : "450",
                     addToClick: "45",
-                    multiplicator : 45
+                    multiplicator : 45,
+                    obtained : 0
                 },
                 {
                     name : "Stade",
                     cost : "500",
                     addToClick: "50",
-                    multiplicator : 50
+                    multiplicator : 50,
+                    obtained : 0
                 },
                 {
                     name : "Equipe de L1",
                     cost : "550",
                     addToClick: "55",
-                    multiplicator : 55
+                    multiplicator : 55,
+                    obtained : 0
                 },
                 {
                     name : "Equipe nationale",
                     cost : "600",
                     addToClick: "60",
-                    multiplicator : 60
+                    multiplicator : 60,
+                    obtained : 0
                 },
                 {
                     name : "Euro 2020",
                     cost : "1000",
                     addToClick: "100",
-                    multiplicator : 100
+                    multiplicator : 100,
+                    obtained : 0
                 },
-            ]
+            ],
+            resource: {},
         }
     },
 
@@ -132,9 +167,19 @@ export default {
             }
         },
 
+        addResource(name){
+            for(let resource of this.allResources){
+                if(resource.name == name){
+                    resource.obtained ++
+                    console.log(resource.name)
+                }
+            }
+        },
+
         addToMultiplicator(nbr){
             this.multiplicator += nbr
-        }
+        },
+
     },
 
     components: {
@@ -144,7 +189,7 @@ export default {
 
 </script>
 
-<style >
+<style scoped>
     .clicScreen{
         background: rgb(177, 177, 177);
         width: 100%;
@@ -160,5 +205,8 @@ export default {
         display: flex;
         flex-direction: row;
         width: 100%;
+    }
+    li{
+        list-style-type: none
     }
 </style>

@@ -10,6 +10,8 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "lazy-debug-legacy": "^0.0.1",
+    "module": "^1.2.5",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0"
   },
