@@ -13,6 +13,7 @@
     "lazy-debug-legacy": "^0.0.1",
     "module": "^1.2.5",
     "vue": "^2.6.11",
+    "vue-fullpage-modal": "^0.5.1",
     "vue-router": "^3.2.0"
   },
   "devDependencies": {
