@@ -7,7 +7,7 @@
             <h4>Timer : {{timer}}</h4>
             <h4>Tous les investissements :</h4>
             <div  v-for="resource in allResources" :key="resource.index" @click="buyResource(resource.cost), addToMultiplicator(resource.multiplicator), addResource(resource.name)"  >
-                <Resource v-if="displayResource(resource.cost)" :cost="resource.cost" :name="resource.name" :addToClic="resource.addToClick" :obtained="resource.obtained"/>
+                <Resource v-if="displayResource(resource.cost) && resource.elmtNeeded" :cost="resource.cost" :name="resource.name" :addToClic="resource.addToClick" :obtained="resource.obtained"/>
             </div>
         </div>
     </div>
@@ -35,7 +35,8 @@ export default {
                     cost : "50",
                     addToClick: "5",
                     multiplicator : 5,
-                    obtained : 0
+                    obtained : 0,
+                    elmtNeeded : this.allResources[0].obtained >= 11,
                 },
                 {
                     name : "Entraineuse",
