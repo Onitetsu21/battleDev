@@ -2,9 +2,9 @@
   <div>
 
     <form method="post">
-      <input type="text" id="firstName" v-model="user.firstName" placeholder="firstName" required >
-      <input type="text" id="lastName" v-model="user.lastName" placeholder="lastName" required >
-      <input type="email" id="email" v-model="user.email" placeholder="email" required >
+      <input type="text" id="firstname" v-model="user.firstname" placeholder="Prénom" required >
+      <input type="text" id="lastname" v-model="user.lastname" placeholder="Nom" required >
+      <input type="email" id="email" v-model="user.email" placeholder="Email" required >
       <select v-model="user.gender" id="gender" required>
           <option value="">--Please choose an option--
         </option>
@@ -30,8 +30,8 @@ export default {
   methods: {
     saveUser(){
       let data = {
-        firstName: this.user.firstName,
-        lastName: this.user.lastName,
+        firstname: this.user.firstname,
+        lastname: this.user.lastname,
         email: this.user.email,
         gender: this.user.gender,
         dateOfBirth:this.user.dateOfBirth
