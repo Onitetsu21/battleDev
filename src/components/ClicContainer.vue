@@ -6,7 +6,7 @@
             <h4>radis par clic : {{ radisPerClic * multiplicator }}</h4>
             <h4>Revenus passifs : {{ income }}</h4>
             <h4>Timer : {{ timer }}</h4>
-            <div  class="allResources" v-for="resource in allResources"
+            <div class="allResources" v-for="resource in allResources"
                 :key="resource.index"
                 @click="
                     buyResource(resource.cost),
@@ -14,7 +14,7 @@
                     addResource(resource.name)"
             >
                 <Resource
-                    v-if="displayResource(resource.cost)"
+                    v-if="displayResource(resource.cost) && resource.displayed"
                     :cost="resource.cost"
                     :name="resource.name"
                     :addToClic="resource.addToClick"
@@ -45,15 +45,15 @@ export default {
                     addToClick: "1",
                     multiplicator: 1,
                     obtained: 0,
+                    displayed: true,
                 },
                 {
                     name: "Equipe amatrice",
                     cost: "50",
                     addToClick: "5",
-
                     multiplicator : 5,
                     obtained : 0,
-                    elmtNeeded : this.allResources[0].obtained >= 11,
+                    displayed: false,
 
                 },
                 {
@@ -62,6 +62,8 @@ export default {
                     addToClick: "10",
                     multiplicator: 10,
                     obtained: 0,
+                    displayed: false,
+
                 },
                 {
                     name: "Terrain de foot",
@@ -69,6 +71,8 @@ export default {
                     addToClick: "15",
                     multiplicator: 15,
                     obtained: 0,
+                    displayed: true,
+
                 },
                 {
                     name: "Equipe de L3",
@@ -76,6 +80,8 @@ export default {
                     addToClick: "20",
                     multiplicator: 20,
                     obtained: 0,
+                    displayed: true,
+
                 },
                 {
                     name: "Manageuse",
@@ -83,6 +89,8 @@ export default {
                     addToClick: "25",
                     multiplicator: 25,
                     obtained: 0,
+                    displayed: false,
+
                 },
                 {
                     name: "Tribune",
@@ -90,6 +98,7 @@ export default {
                     addToClick: "30",
                     multiplicator: 30,
                     obtained: 0,
+                    displayed: true,
                 },
                 {
                     name: "Equipe de L2",
@@ -97,6 +106,7 @@ export default {
                     addToClick: "35",
                     multiplicator: 35,
                     obtained: 0,
+                    displayed: false,
                 },
                 {
                     name: "Sponsor",
@@ -104,6 +114,7 @@ export default {
                     addToClick: "40",
                     multiplicator: 40,
                     obtained: 0,
+                    displayed: false,
                 },
                 {
                     name: "Joueuse vedette",
@@ -111,6 +122,7 @@ export default {
                     addToClick: "45",
                     multiplicator: 45,
                     obtained: 0,
+                    displayed: false,
                 },
                 {
                     name: "Stade",
@@ -118,6 +130,7 @@ export default {
                     addToClick: "50",
                     multiplicator: 50,
                     obtained: 0,
+                    displayed: false,
                 },
                 {
                     name: "Equipe de L1",
@@ -125,6 +138,7 @@ export default {
                     addToClick: "55",
                     multiplicator: 55,
                     obtained: 0,
+                    displayed: false,
                 },
                 {
                     name: "Equipe nationale",
@@ -132,6 +146,7 @@ export default {
                     addToClick: "60",
                     multiplicator: 60,
                     obtained: 0,
+                    displayed: false,
                 },
                 {
                     name: "Euro 2020",
@@ -139,6 +154,7 @@ export default {
                     addToClick: "100",
                     multiplicator: 100,
                     obtained: 0,
+                    displayed: false,
                 },
             ],
             resource: {},
@@ -175,6 +191,22 @@ export default {
             localStorage.setItem("lastConnection", Date.now())
             localStorage.setItem("storage", this.storage)
         }
+        this.displayed(this.allResources[1], this.allResources[0], 11)
+        this.displayed(this.allResources[2], this.allResources[1], 1)
+        this.displayed(this.allResources[3], this.allResources[2], 1)
+        this.displayed(this.allResources[4], this.allResources[3], 1)
+        this.displayed(this.allResources[5], this.allResources[4], 1)
+        this.displayed(this.allResources[6], this.allResources[5], 1)
+        this.displayed(this.allResources[7], this.allResources[6], 1)
+        this.displayed(this.allResources[8], this.allResources[7], 1)
+        this.displayed(this.allResources[9], this.allResources[8], 1)
+        this.displayed(this.allResources[10], this.allResources[9], 1)
+        this.displayed(this.allResources[11], this.allResources[10], 1)
+        this.displayed(this.allResources[12], this.allResources[11], 1)
+        this.displayed(this.allResources[13], this.allResources[12], 5)
+        this.displayed(this.allResources[14], this.allResources[13], 1)
+
+
     },
 
     methods: {
@@ -264,6 +296,14 @@ export default {
             console.log("totalBonus", totalBonus);
             this.budget += totalBonus
             window.alert("En votre absence vous avez gagné : " + totalBonus + " radis")
+        },
+
+        displayed(elm, elmNeeded, numNeeded){
+          if (elmNeeded.obtained >= numNeeded){
+            elm.displayed = true
+          } else {
+            elm.displayed = false
+          }
         }
     },
 
