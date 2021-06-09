@@ -1,17 +1,26 @@
 <template lang="">
     <div>
+        <button class="btn" @click="restart">
+            Sauvegarder la partie : <span v-if="storage"> Oui </span>
+            <span v-else> Non </span>
+        </button>
         <div @click="clic" class="clicScreen">
 
             <h1>Budget : {{ budget }} Radis</h1>
             <h4>radis par clic : {{ radisPerClic * multiplicator }}</h4>
             <h4>Revenus passifs : {{ income }}</h4>
             <h4>Timer : {{ timer }}</h4>
-            <div class="allResources" v-for="resource in allResources"
+            <button v-if="bonusQuestionDisplay" @click="displayBonusQuestion">Multiplier vos radis par 2 !</button>
+            <div
+                class="allResources"
+                v-for="resource in allResources"
+
                 :key="resource.index"
                 @click="
                     buyResource(resource.cost),
-                    addToMultiplicator(resource.multiplicator),
-                    addResource(resource.name)"
+                        addToMultiplicator(resource.multiplicator),
+                        addResource(resource.name)
+                "
             >
                 <Resource
                     v-if="displayResource(resource.cost) && resource.displayed"
@@ -22,15 +31,12 @@
                 />
             </div>
         </div>
-        <button class="btn" @click="restart">
-            Sauvegarder la partie : <span v-if="storage"> Oui </span>
-            <span v-else> Non </span>
-        </button>
     </div>
 </template>
 
 <script>
 import Resource from "../components/Resource";
+import BonusQuestion from "../components/BonusQuestion";
 export default {
     name: "ClicContainer",
     data() {
@@ -162,8 +168,29 @@ export default {
             incomeRate: 10,
             timer: 0,
             storage: false,
+            allBonusQuestions: [
+                {
+                    title: "Buvez-vous de l'alcool",
+                    type: "select",
+                    options: [
+                        "oui",
+                        "non"
+                    ],
+                    questionLabel: "drinkAlcool",
+                },
+                {
+                    title: "quelle alcool vous préférez boir",
+                    type: "input",
+                    placeholder : "Alcool préféré",
+                    questionLabel: "whichAlcool",
+                }
+            ],
+            activeBonusQuestion: 0,
+            nbrClic: 0,
+            bonusQuestionDisplay: false
         };
     },
+
     mounted() {
         this.increaseTimer();
         if (localStorage.budget) {
@@ -172,10 +199,15 @@ export default {
             this.radisPerClic = parseInt(localStorage.radisPerClic);
             this.income = parseInt(localStorage.income);
             this.multiplicator = parseInt(localStorage.multiplicator);
-            this.storage = localStorage.storage
-            this.timeBonus(this.timeSinceLastConnection(localStorage.lastConnection, Date.now()))
+            this.storage = localStorage.storage;
+            this.timeBonus(
+                this.timeSinceLastConnection(
+                    localStorage.lastConnection,
+                    Date.now()
+                )
+            );
         }
-        
+        localStorage.setItem("bonusActive", false);
     },
 
     updated() {
@@ -188,8 +220,12 @@ export default {
             localStorage.setItem("radisPerClic", parseInt(this.radisPerClic));
             localStorage.setItem("income", this.income);
             localStorage.setItem("multiplicator", this.multiplicator);
-            localStorage.setItem("lastConnection", Date.now())
-            localStorage.setItem("storage", this.storage)
+            localStorage.setItem("lastConnection", Date.now());
+            localStorage.setItem("storage", this.storage);
+        }
+        if (localStorage.getItem("bonusActive") == "true") {
+            this.budget = this.budget * 2;
+            localStorage.setItem("bonusActive", false);
         }
         this.displayed(this.allResources[1], this.allResources[0], 11)
         this.displayed(this.allResources[2], this.allResources[1], 1)
@@ -211,8 +247,12 @@ export default {
 
     methods: {
         clic() {
-            this.budget +=
-                parseInt(this.radisPerClic) * parseInt(this.multiplicator);
+            this.budget += parseInt(this.radisPerClic) * parseInt(this.multiplicator);
+            this.nbrClic ++
+            if(this.nbrClic >= 21){
+                this.nbrClic = 0
+                this.bonusQuestionDisplay = true
+            }
         },
 
         buyResource(cost) {
@@ -254,14 +294,14 @@ export default {
         },
 
         restart() {
-            // localStorage.removeItem('budget')
-            // localStorage.removeItem("allResources")
-            // localStorage.removeItem("radisPerClic")
-            // localStorage.removeItem("income")
-            // localStorage.removeItem("multiplicator")
             console.log("avant: ", this.storage);
             if (this.storage) {
-                localStorage.clear();
+                localStorage.removeItem("budget");
+                localStorage.removeItem("allResources");
+                localStorage.removeItem("radisPerClic");
+                localStorage.removeItem("income");
+                localStorage.removeItem("multiplicator");
+                // localStorage.clear();
                 this.storage = false;
             } else {
                 this.storage = true;
@@ -285,15 +325,17 @@ export default {
             tmp = Math.floor((tmp - diff.hour) / 24); // Nombre de jours restants
             diff.day = tmp;
             console.log(diff);
-            let totalSec = diff.sec + (diff.min * 60) + (diff.hour * 3600) + (diff.day * 86400)
-          
-            console.log("totalSec", totalSec)
+            let totalSec =
+                diff.sec + diff.min * 60 + diff.hour * 3600 + diff.day * 86400;
+
+            console.log("totalSec", totalSec);
             return totalSec;
         },
 
-        timeBonus(sec){
-            let totalBonus = Math.round(sec * (this.income/this.incomeRate))
+        timeBonus(sec) {
+            let totalBonus = Math.round(sec * (this.income / this.incomeRate));
             console.log("totalBonus", totalBonus);
+
             this.budget += totalBonus
             window.alert("En votre absence vous avez gagné : " + totalBonus + " radis")
         },
@@ -304,22 +346,39 @@ export default {
           } else {
             elm.displayed = false
           }
-        }
+        },
+        displayBonusQuestion(){
+            this.openModal(BonusQuestion, this.allBonusQuestions[this.activeBonusQuestion])
+            this.bonusQuestionDisplay = false
+            this.activeBonusQuestion ++
+        },
+
+        openModal(component, data) {
+            this.$FModal.show(
+                {
+                    component: component,
+                },
+                data
+            );
+        },
     },
 
     components: {
         Resource,
+        // eslint-disable-next-line vue/no-unused-components
+        BonusQuestion,
     },
 };
 </script>
 
 <style>
 .clicScreen {
-    background: rgb(177, 177, 177);
+    background: rgb(177, 177, 177) cover;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: start;
 }
 
 li {
@@ -334,9 +393,10 @@ li {
         border: 2px white solid; */
 }
 
-.allResources{
+.allResources {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 10px;
 }
 </style>
