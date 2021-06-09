@@ -24,8 +24,6 @@
           <option value="Autre">Autre</option>
         </select>
       </div>
-
-
       <input type="date" v-model="user.dateOfBirth">
       <input type="text" v-model="user.nationality" placeholder="nationalité">
       <input type="number" v-model="user.zipCode" placeholder="code postal">
@@ -59,6 +57,8 @@ export default {
         city:this.user.city,
         street:this.user.street
       }
+      localStorage.setItem("userData", JSON.stringify(data))
+      console.log(data)
       UserDataService.create(data)
           .then(response=>{
             console.log(response)

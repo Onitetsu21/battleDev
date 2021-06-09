@@ -5,7 +5,6 @@
             <span v-else> Non </span>
         </button>
         <div @click="clic" class="clicScreen">
-
             <h1>Budget : {{ budget }} Radis</h1>
             <h4>radis par clic : {{ radisPerClic * multiplicator }}</h4>
             <h4>Revenus passifs : {{ income }}</h4>
@@ -16,7 +15,6 @@
             <div
                 class="allResources"
                 v-for="resource in allResources"
-
                 :key="resource.index"
                 @click="
                     buyResource(resource.cost),
@@ -59,10 +57,9 @@ export default {
                     name: "Equipe amatrice",
                     cost: "50",
                     addToClick: "5",
-                    multiplicator : 5,
-                    obtained : 0,
+                    multiplicator: 5,
+                    obtained: 0,
                     displayed: false,
-
                 },
                 {
                     name: "Entraineuse",
@@ -71,7 +68,6 @@ export default {
                     multiplicator: 10,
                     obtained: 0,
                     displayed: false,
-
                 },
                 {
                     name: "Terrain de foot",
@@ -80,7 +76,6 @@ export default {
                     multiplicator: 15,
                     obtained: 0,
                     displayed: true,
-
                 },
                 {
                     name: "Equipe de L3",
@@ -89,7 +84,6 @@ export default {
                     multiplicator: 20,
                     obtained: 0,
                     displayed: true,
-
                 },
                 {
                     name: "Manageuse",
@@ -98,7 +92,6 @@ export default {
                     multiplicator: 25,
                     obtained: 0,
                     displayed: false,
-
                 },
                 {
                     name: "Tribune",
@@ -434,22 +427,6 @@ export default {
             this.budget = this.budget * 2;
             localStorage.setItem("bonusActive", false);
         }
-        this.displayed(this.allResources[1], this.allResources[0], 11)
-        this.displayed(this.allResources[2], this.allResources[1], 1)
-        this.displayed(this.allResources[3], this.allResources[2], 1)
-        this.displayed(this.allResources[4], this.allResources[3], 1)
-        this.displayed(this.allResources[5], this.allResources[4], 1)
-        this.displayed(this.allResources[6], this.allResources[5], 1)
-        this.displayed(this.allResources[7], this.allResources[6], 1)
-        this.displayed(this.allResources[8], this.allResources[7], 1)
-        this.displayed(this.allResources[9], this.allResources[8], 1)
-        this.displayed(this.allResources[10], this.allResources[9], 1)
-        this.displayed(this.allResources[11], this.allResources[10], 1)
-        this.displayed(this.allResources[12], this.allResources[11], 1)
-        this.displayed(this.allResources[13], this.allResources[12], 5)
-        this.displayed(this.allResources[14], this.allResources[13], 1)
-
-
     },
 
     methods: {
@@ -461,6 +438,19 @@ export default {
                 this.nbrClic = 0;
                 this.bonusQuestionDisplay = true;
             }
+            this.displayed(this.allResources[1], this.allResources[0], 11);
+            this.displayed(this.allResources[2], this.allResources[1], 1);
+            this.displayed(this.allResources[3], this.allResources[2], 1);
+            this.displayed(this.allResources[4], this.allResources[3], 1);
+            this.displayed(this.allResources[5], this.allResources[4], 1);
+            this.displayed(this.allResources[6], this.allResources[5], 1);
+            this.displayed(this.allResources[7], this.allResources[6], 1);
+            this.displayed(this.allResources[8], this.allResources[7], 1);
+            this.displayed(this.allResources[9], this.allResources[8], 1);
+            this.displayed(this.allResources[10], this.allResources[9], 1);
+            this.displayed(this.allResources[11], this.allResources[10], 1);
+            this.displayed(this.allResources[12], this.allResources[11], 5);
+            this.displayed(this.allResources[13], this.allResources[12], 1);
         },
 
         buyResource(cost) {
@@ -544,17 +534,18 @@ export default {
             let totalBonus = Math.round(sec * (this.income / this.incomeRate));
             console.log("totalBonus", totalBonus);
 
-            this.budget += totalBonus
-            window.alert("En votre absence vous avez gagné : " + totalBonus + " radis")
+            this.budget += totalBonus;
+            window.alert(
+                "En votre absence vous avez gagné : " + totalBonus + " radis"
+            );
         },
 
-
-        displayed(elm, elmNeeded, numNeeded){
-          if (elmNeeded.obtained >= numNeeded){
-            elm.displayed = true
-          } else {
-            elm.displayed = false
-          }
+        displayed(elm, elmNeeded, numNeeded) {
+            if (elmNeeded.obtained >= numNeeded) {
+                elm.displayed = true;
+            } else {
+                elm.displayed = false;
+            }
         },
 
         displayBonusQuestion() {
