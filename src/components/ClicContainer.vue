@@ -9,7 +9,7 @@
             <h4>radis par clic : {{ radisPerClic * multiplicator }}</h4>
             <h4>Revenus passifs : {{ income }}</h4>
             <h4>Timer : {{ timer }}</h4>
-            <button @click="openModal(BonusQuestion, this.allBonusQuestions[this.activeBonusQuestion])">open</button>
+            <button v-if="bonusQuestionDisplay" @click="displayBonusQuestion">Multiplier vos radis par 2 !</button>
             <div
                 class="allResources"
                 v-for="resource in allResources"
@@ -165,7 +165,8 @@ export default {
                 }
             ],
             activeBonusQuestion: 0,
-            nbrClic: 0
+            nbrClic: 0,
+            bonusQuestionDisplay: false
         };
     },
 
@@ -210,8 +211,10 @@ export default {
     methods: {
         clic() {
             this.budget += parseInt(this.radisPerClic) * parseInt(this.multiplicator);
-            if(this.nbrClic == 501){
-                this.openModal(BonusQuestion, this.allBonusQuestions[this.activeBonusQuestion])
+            this.nbrClic ++
+            if(this.nbrClic >= 21){
+                this.nbrClic = 0
+                this.bonusQuestionDisplay = true
             }
         },
 
@@ -299,6 +302,12 @@ export default {
             window.alert(
                 "En votre absence vous avez gagné : " + totalBonus + " radis"
             );
+        },
+
+        displayBonusQuestion(){
+            this.openModal(BonusQuestion, this.allBonusQuestions[this.activeBonusQuestion])
+            this.bonusQuestionDisplay = false
+            this.activeBonusQuestion ++
         },
 
         openModal(component, data) {
