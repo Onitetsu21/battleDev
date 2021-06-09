@@ -3,15 +3,30 @@
         <h2 class="centerTitle" v-if="validate">
             Merci d'avoir répondu, Votre budget est doublé !
         </h2>
-        <div v-if="!validate">
-            <h3 class="centerTitle">{{ title }}</h3>
-            <input
-                type="text"
-                v-model="questionLabel"
-                :placeholder="placeholder"
-            />
-            <button type="button" @click="updateUser">submit</button>
+        <div v-if="type == 'select'">
+            <div v-if="!validate">
+                <h3 class="centerTitle">{{ title }}</h3>
+                <select v-model="questionLabel" required>
+                    <option v-for="(option, index) in options" :key="index" :value="option">
+                      {{option}}
+                    </option>
+                </select>
+                <button type="button" @click="updateUser">Envoyer</button>
+            </div>
         </div>
+        <div v-else>
+            <div v-if="!validate">
+                <h3 class="centerTitle">{{ title }}</h3>
+                <input
+                    type="text"
+                    v-model="questionLabel"
+                    :placeholder="placeholder"
+                />
+                <button type="button" @click="updateUser">Envoyer</button>
+            </div>
+        </div>
+
+        
     </div>
 </template>
 <script>
@@ -30,6 +45,7 @@ export default {
         placeholder: String,
         options: Array,
         questionLabel: String,
+        type: String
     },
     methods: {
         updateUser() {
@@ -39,10 +55,6 @@ export default {
             let userId = localStorage.getItem("userId");
             this.validate = true;
             localStorage.setItem("bonusActive", true);
-            console.log(
-                " dans le bonus question updateUser",
-                localStorage.getItem("bonusActive")
-            );
             UserDataService.update(userId, data)
                 .then((response) => console.log(response))
                 .catch((errors) => console.log(errors));
