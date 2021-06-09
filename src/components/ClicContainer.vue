@@ -29,7 +29,6 @@
                 />
             </div>
         </div>
-        
     </div>
 </template>
 
@@ -148,6 +147,24 @@ export default {
             incomeRate: 10,
             timer: 0,
             storage: false,
+            allBonusQuestions: [
+                {
+                    title: "Buvez-vous de l'alcool",
+                    type: "select",
+                    options: [
+                        "oui",
+                        "non"
+                    ],
+                    questionLabel: "drinkAlcool",
+                },
+                {
+                    title: "quelle alcool vous préférez boir",
+                    type: "input",
+                    placeholder : "Alcool préféré",
+                    questionLabel: "whichAlcool",
+                }
+            ],
+            activeBonusQuestion: 0,
         };
     },
 
@@ -167,7 +184,7 @@ export default {
                 )
             );
         }
-        localStorage.setItem("bonusActive", false)
+        localStorage.setItem("bonusActive", false);
     },
 
     updated() {
@@ -183,9 +200,9 @@ export default {
             localStorage.setItem("lastConnection", Date.now());
             localStorage.setItem("storage", this.storage);
         }
-        if(localStorage.getItem("bonusActive") ==  "true"){
-            this.budget = this.budget * 2
-            localStorage.setItem("bonusActive", false)
+        if (localStorage.getItem("bonusActive") == "true") {
+            this.budget = this.budget * 2;
+            localStorage.setItem("bonusActive", false);
         }
     },
 
@@ -282,16 +299,12 @@ export default {
         },
 
         openModal() {
+
             this.$FModal.show(
                 {
                     component: BonusQuestion,
                 },
-                {
-                    title: "Buvez-vous de l'alcool ?",
-                    placeholder: "oui ou non",
-                    questionLabel: "biere",
-                    
-                }
+                this.allBonusQuestions[this.activeBonusQuestion]
             );
         },
     },
