@@ -2,6 +2,7 @@
   <div>
 
     <form method="post">
+
       <input type="text" id="firstname" v-model="user.firstname" placeholder="prénom" required >
       <input type="text" id="lastname" v-model="user.lastname" placeholder="Nom" required >
       <input type="email" id="email" v-model="user.email" placeholder="email" required >
@@ -24,6 +25,7 @@
         </select>
       </div>
 
+
       <input type="date" v-model="user.dateOfBirth">
       <input type="text" v-model="user.nationality" placeholder="nationalité">
       <input type="number" v-model="user.zipCode" placeholder="code postal">
@@ -43,7 +45,6 @@ export default {
     return {
       user:[]
     }
-
   },
   methods: {
     saveUser(){
@@ -59,7 +60,10 @@ export default {
         street:this.user.street
       }
       UserDataService.create(data)
-          .then(response=>console.log(response) )
+          .then(response=>{
+            console.log(response)
+            localStorage.setItem("userId", response.data.id);
+          } )
           .catch(errors=>console.log(errors))
     }
   },
@@ -294,7 +298,7 @@ let allQuestions = [
 
 </script>
 
-<style scoped>
+<style>
 input,select,button{
   display: flex;
   margin:auto;
@@ -317,6 +321,11 @@ div.select {
 div.select select {
   width: 8rem;
 }
+
+input, select{
+  padding: 10px;
+  width: 80%;
+}
 /*body {*/
 /*    background-color: #663399FF;*/
 /*}*/
@@ -325,5 +334,11 @@ button {
     color: white;
     padding: 10px;
     border: none;
+    margin-bottom: 10px;
+}
+
+button:active{
+  background-color: rgb(59, 24, 255);
+  border: 2px white solid;
 }
 </style>
