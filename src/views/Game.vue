@@ -10,8 +10,6 @@
 import ClicContainer from '../components/ClicContainer';
 export default {
     name: "Game",
-
-
     components:{
         ClicContainer
     }

@@ -26,7 +26,6 @@ export default {
     return {
       user:[]
     }
-
   },
   methods: {
     saveUser(){
@@ -38,7 +37,10 @@ export default {
         dateOfBirth:this.user.dateOfBirth
       }
       UserDataService.create(data)
-          .then(response=>console.log(response) )
+          .then(response=>{
+            console.log(response)
+            localStorage.setItem("userId", response.data.id);
+          } )
           .catch(errors=>console.log(errors))
     }
   },
@@ -49,13 +51,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 input,select,button{
   display: flex;
   margin:auto;
   margin-top:1%;
   border-radius: 0.7em;
   border-color: #6348FFFF;
+}
+
+input, select{
+  padding: 10px;
+  width: 80%;
 }
 /*body {*/
 /*    background-color: #663399FF;*/
@@ -65,5 +72,11 @@ button {
     color: white;
     padding: 10px;
     border: none;
+    margin-bottom: 10px;
+}
+
+button:active{
+  background-color: rgb(59, 24, 255);
+  border: 2px white solid;
 }
 </style>
