@@ -10,7 +10,9 @@
             <h4>radis par clic : {{ radisPerClic * multiplicator }}</h4>
             <h4>Revenus passifs : {{ income }}</h4>
             <h4>Timer : {{ timer }}</h4>
-            <button v-if="bonusQuestionDisplay" @click="displayBonusQuestion">Multiplier vos radis par 2 !</button>
+            <button v-if="bonusQuestionDisplay" @click="displayBonusQuestion">
+                Multiplier vos radis par 2 !
+            </button>
             <div
                 class="allResources"
                 v-for="resource in allResources"
@@ -170,24 +172,229 @@ export default {
             storage: false,
             allBonusQuestions: [
                 {
-                    title: "Buvez-vous de l'alcool",
+                    title: "avez-vous une maison",
+                    options: ["oui", "non"],
                     type: "select",
-                    options: [
-                        "oui",
-                        "non"
-                    ],
-                    questionLabel: "drinkAlcool",
+                    questionLabel: "housing",
                 },
                 {
-                    title: "quelle alcool vous préférez boir",
+                    title: "Combien de voiture avez-vous ?",
+                    options: [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                        "10",
+                        "11",
+                        "12",
+                        "13",
+                        "14",
+                        "15",
+                    ],
+                    type: "select",
+                    questionLabel: "numberOfVehicles",
+                },
+                {
+                    title: "Quel est le fournisseur de votre accee internet",
                     type: "input",
-                    placeholder : "Alcool préféré",
-                    questionLabel: "whichAlcool",
-                }
+                    questionLabel: "internetServiceProvider",
+                },
+                {
+                    title: "Quel est le fournisseur de votre forfait mobile",
+                    type: "input",
+                    questionLabel: "mobileOperator",
+                },
+                {
+                    title: "Quel est chaine de sport étent vous abonner",
+                    type: "input",
+                    questionLabel: "subscribesToSportChannels",
+                },
+                {
+                    title: "Comment se nomme votre religion",
+                    type: "input",
+                    questionLabel: "religions",
+                },
+                {
+                    title: "Combien avez-vous de frère et soeur",
+                    options: [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                        "10",
+                        "11",
+                        "12",
+                        "13",
+                        "14",
+                        "15",
+                    ],
+                    type: "select",
+                    questionLabel: "numberOfSiblings",
+                },
+                {
+                    title: "Quel est votre status civil",
+                    options: [
+                        "célib",
+                        "union libre",
+                        "pacs",
+                        "marier",
+                        "polyamour",
+                        "trouple",
+                        "autre",
+                    ],
+                    type: "select",
+                    questionLabel: "civilStatus",
+                },
+                {
+                    title: "Quel est votre orientation sexule",
+                    options: ["bi", "hétérosexuel", "hommosexuel"],
+                    type: "select",
+                    questionLabel: "sexualOrientation",
+                },
+                {
+                    title: "Combien avez-vous d'enfant",
+                    options: [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                        "10",
+                        "11",
+                        "12",
+                        "13",
+                        "14",
+                        "15",
+                    ],
+                    type: "select",
+                    questionLabel: "numberOfChildren",
+                },
+                {
+                    title: "combien avez-vous d'animeau de compagnie",
+                    options: [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                        "10",
+                        "11",
+                        "12",
+                        "13",
+                        "14",
+                        "15",
+                    ],
+                    type: "select",
+                    questionLabel: "numberOfPets",
+                },
+                {
+                    title: "Avez-vous étais vacciné du covid 19",
+                    options: ["Oui", "Non"],
+                    type: "select",
+                    questionLabel: "covidVaccinated",
+                },
+                {
+                    title: "Buvez-vous de l'alcool ?",
+                    options: ["oui", "non"],
+                    type: "select",
+                    questionLabel: "drinklAlcool",
+                },
+                {
+                    title: "Fumez-vous du tabac",
+                    options: ["Oui", "Non"],
+                    type: "select",
+                    questionLabel: "smokesTobacco",
+                },
+                {
+                    title: "lisez-vous des revus sportif",
+                    options: ["Oui", "Non"],
+                    type: "select",
+                    questionLabel: "readsSportPress",
+                },
+                {
+                    title: "regardez-vous des émission sportif",
+                    options: ["oui", "Non"],
+                    type: "select",
+                    questionLabel: "watchSportShow",
+                },
+                {
+                    title: "Faites-vous du sport",
+                    options: ["Oui", "Non"],
+                    type: "select",
+                    questionLabel: "doesSport",
+                },
+                {
+                    title: "Est-ce que vous jouez au foot",
+                    options: ["Oui", "Non"],
+                    type: "select",
+                    questionLabel: "playsFootball",
+                },
+                {
+                    title: "Allez-vous au stade regerder des match",
+                    options: ["oui", "Non"],
+                    type: "select",
+                    questionLabel: "goesToFootballStadium",
+                },
+                {
+                    title: "Quel est votre Club de foot préférée",
+                    type: "input",
+                    questionLabel: "favouriteFootballClub",
+                },
+                {
+                    title: "Quel est votre équipe de foot préférée",
+                    type: "input",
+                    questionLabel: "favouriteFootballTeam",
+                },
+                {
+                    title: "Vous étes plutôt Rugby ou Foot",
+                    options: ["Rugby", "Foot"],
+                    type: "select",
+                    questionLabel: "prefersFootballOverRugby",
+                },
+                {
+                    title: "regardez-vous des match sur votre TV",
+                    options: ["oui", "Non"],
+                    type: "select",
+                    questionLabel: "watchesFootballOnTV",
+                },
+                {
+                    title: "regardez-vous des match sur votre Mobile",
+                    options: ["oui", "Non"],
+                    type: "select",
+                    questionLabel: "watchesFootballOnMobilePhone",
+                },
+                {
+                    title: "regardez-vous des match via un navigateur web",
+                    options: ["oui", "Non"],
+                    type: "select",
+                    questionLabel: "watchesFootballOnline",
+                },
             ],
             activeBonusQuestion: 0,
             nbrClic: 0,
-            bonusQuestionDisplay: false
+            bonusQuestionDisplay: false,
         };
     },
 
@@ -247,11 +454,12 @@ export default {
 
     methods: {
         clic() {
-            this.budget += parseInt(this.radisPerClic) * parseInt(this.multiplicator);
-            this.nbrClic ++
-            if(this.nbrClic >= 21){
-                this.nbrClic = 0
-                this.bonusQuestionDisplay = true
+            this.budget +=
+                parseInt(this.radisPerClic) * parseInt(this.multiplicator);
+            this.nbrClic++;
+            if (this.nbrClic >= 21) {
+                this.nbrClic = 0;
+                this.bonusQuestionDisplay = true;
             }
         },
 
@@ -340,6 +548,7 @@ export default {
             window.alert("En votre absence vous avez gagné : " + totalBonus + " radis")
         },
 
+
         displayed(elm, elmNeeded, numNeeded){
           if (elmNeeded.obtained >= numNeeded){
             elm.displayed = true
@@ -347,10 +556,14 @@ export default {
             elm.displayed = false
           }
         },
-        displayBonusQuestion(){
-            this.openModal(BonusQuestion, this.allBonusQuestions[this.activeBonusQuestion])
-            this.bonusQuestionDisplay = false
-            this.activeBonusQuestion ++
+
+        displayBonusQuestion() {
+            this.openModal(
+                BonusQuestion,
+                this.allBonusQuestions[this.activeBonusQuestion]
+            );
+            this.bonusQuestionDisplay = false;
+            this.activeBonusQuestion++;
         },
 
         openModal(component, data) {
