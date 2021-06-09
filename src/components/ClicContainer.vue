@@ -9,7 +9,7 @@
             <h4>radis par clic : {{ radisPerClic * multiplicator }}</h4>
             <h4>Revenus passifs : {{ income }}</h4>
             <h4>Timer : {{ timer }}</h4>
-            <button @click="openModal">open</button>
+            <button @click="openModal(BonusQuestion, this.allBonusQuestions[this.activeBonusQuestion])">open</button>
             <div
                 class="allResources"
                 v-for="resource in allResources"
@@ -165,6 +165,7 @@ export default {
                 }
             ],
             activeBonusQuestion: 0,
+            nbrClic: 0
         };
     },
 
@@ -208,8 +209,10 @@ export default {
 
     methods: {
         clic() {
-            this.budget +=
-                parseInt(this.radisPerClic) * parseInt(this.multiplicator);
+            this.budget += parseInt(this.radisPerClic) * parseInt(this.multiplicator);
+            if(this.nbrClic == 501){
+                this.openModal(BonusQuestion, this.allBonusQuestions[this.activeBonusQuestion])
+            }
         },
 
         buyResource(cost) {
@@ -298,13 +301,12 @@ export default {
             );
         },
 
-        openModal() {
-
+        openModal(component, data) {
             this.$FModal.show(
                 {
-                    component: BonusQuestion,
+                    component: component,
                 },
-                this.allBonusQuestions[this.activeBonusQuestion]
+                data
             );
         },
     },

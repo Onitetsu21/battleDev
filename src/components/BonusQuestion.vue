@@ -28,6 +28,7 @@ export default {
     props: {
         title: String,
         placeholder: String,
+        options: Array,
         questionLabel: String,
     },
     methods: {
