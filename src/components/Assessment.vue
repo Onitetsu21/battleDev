@@ -17,7 +17,7 @@
 
     <p>Ces données ont de la valeur, beaucoup de valeur pour nous ! </p>
     <p>Avec celles-ci, n'importe quel aggrégateur peut, en recoupant d'autres jeux de données, fournir une liste extrêmement précise d'informations vous concernant à n'importe quelle entreprise souhaitant les acheter.</p>
-    <p>Que penseriez-vous si votre banquier vous refusait un prêt parce que les informatins dont il dispose vous concernant vous classe comme personne à risque ?</p>
+    <p>Que penseriez-vous si votre banquier vous refusait un prêt parce que les informations dont il dispose vous concernant vous classe comme personne à risque ?</p>
     <p>Et si votre potentiel employeur refusait de vous embaucher à cause d'une opinion footballistique différente ?</p>
     <p>Pour en savoir plus sur la protection de vos données, nous vous invitons à vous rendre sur <a href="https://www.quechoisir.org/nos-combats-donnees-personnelles-nos-combats-et-conseils-pour-les-proteger-n63115/">cet article</a> de l'assocation Que Choisir.</p>
   </div>
