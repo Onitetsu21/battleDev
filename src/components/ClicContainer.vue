@@ -481,7 +481,6 @@ export default {
       for (let resource of this.allResources) {
         if (resource.name == name) {
           resource.obtained++;
-          console.log(resource.name);
         }
       }
     },
@@ -501,7 +500,6 @@ export default {
     },
 
     restart() {
-      console.log("avant: ", this.storage);
       if (this.storage) {
         localStorage.removeItem("budget");
         localStorage.removeItem("allResources");
@@ -513,7 +511,6 @@ export default {
       } else {
         this.storage = true;
       }
-      console.log("après:", this.storage);
     },
 
     timeSinceLastConnection(date1, date2) {
@@ -531,7 +528,6 @@ export default {
 
       tmp = Math.floor((tmp - diff.hour) / 24); // Nombre de jours restants
       diff.day = tmp;
-      console.log(diff);
       let totalSec = diff.sec + diff.min * 60 + diff.hour * 3600 + diff.day * 86400;
 
       return totalSec;
@@ -539,7 +535,6 @@ export default {
 
     timeBonus(sec) {
       let totalBonus = Math.round(sec * (this.income / this.incomeRate));
-      console.log("totalBonus", totalBonus);
 
       this.budget += totalBonus;
       window.alert("En votre absence vous avez gagné : " + totalBonus + " radis");
