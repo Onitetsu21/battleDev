@@ -81,7 +81,10 @@ export default {
 </script>
 <style>
 .fpm--modal-content {
-    height: 60vh;
+    min-height: 60vh;
     max-height: 90%;
+    background: rgb(0,113,251);
+    background: linear-gradient(43deg, rgba(0,113,251,1) 0%, #00A5E7 100%); 
+    color: white;
 }
 </style>
