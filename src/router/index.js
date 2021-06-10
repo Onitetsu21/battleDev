@@ -44,13 +44,7 @@ router.beforeEach((to, from, next) => {
       path:'/info',
       query: {redirect: to.fullPath}
     })
-  } else {
-    next()
-  }
-})
-
-router.beforeEach((to, from, next) => {
-  if (to.name === 'Info' && JSON.parse(localStorage.getItem("userData"))) {
+  } else if (to.name === 'Info' && JSON.parse(localStorage.getItem("userData"))) {
     next({
       path:'/game',
       query: {redirect: to.fullPath}
