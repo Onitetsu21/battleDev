@@ -76,7 +76,8 @@ export default {
                     addToClick: "15",
                     multiplicator: 15,
                     obtained: 0,
-                    displayed: true,
+                    displayed: false,
+
                 },
                 {
                     name: "Equipe de L3",
@@ -84,7 +85,7 @@ export default {
                     addToClick: "20",
                     multiplicator: 20,
                     obtained: 0,
-                    displayed: true,
+                    displayed: false,
                 },
                 {
                     name: "Manageuse",
@@ -100,7 +101,7 @@ export default {
                     addToClick: "30",
                     multiplicator: 30,
                     obtained: 0,
-                    displayed: true,
+                    displayed: false,
                 },
                 {
                     name: "Equipe de L2",
@@ -447,6 +448,7 @@ export default {
                 this.nbrClic = 0;
                 this.bonusQuestionDisplay = true;
             }
+
             this.displayed(this.allResources[1], this.allResources[0], 11);
             this.displayed(this.allResources[2], this.allResources[1], 1);
             this.displayed(this.allResources[3], this.allResources[2], 1);
@@ -460,6 +462,7 @@ export default {
             this.displayed(this.allResources[11], this.allResources[10], 1);
             this.displayed(this.allResources[12], this.allResources[11], 5);
             this.displayed(this.allResources[13], this.allResources[12], 1);
+
         },
 
         buyResource(cost) {
