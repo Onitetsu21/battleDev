@@ -9,14 +9,14 @@
       <div class="select">
         <label>sexe:</label>
         <select v-model="user.gender" id="gender" required>
-            <option disabled value="">Choisissez</option>
-            <option value="Homme">Homme</option>
-            <option value="Femme">Femme</option>
-            <option value="Agenre">Agenre</option>
-            <option value="Cis-Femme">Cis-Femme</option>
-            <option value="Cis-Homme">Cis-Homme</option>
-            <option value="FTM">FTM</option>
-            <option value="MTF">MTF</option>
+          <option disabled value="">Choisissez</option>
+          <option value="Homme">Homme</option>
+          <option value="Femme">Femme</option>
+          <option value="Agenre">Agenre</option>
+          <option value="Cis-Femme">Cis-Femme</option>
+          <option value="Cis-Homme">Cis-Homme</option>
+          <option value="FTM">FTM</option>
+          <option value="MTF">MTF</option>
           <option value="Transgenre">Transgenre</option>
           <option value="Genderfluid">Genderfluid</option>
           <option value="Intersexe">Intersexe</option>
@@ -25,11 +25,7 @@
         </select>
       </div>
       <input type="date" v-model="user.dateOfBirth">
-      <input type="text" v-model="user.nationality" placeholder="nationalité">
-      <input type="number" v-model="user.zipCode" placeholder="code postal">
-      <input type="text" v-model="user.city" placeholder="ville">
-      <input type="text" v-model="user.street" placeholder="rue">
-      <button type="button" @click="saveUser">submit</button>
+      <button type="button" @click="verifyData">submit</button>
     </form>
   </div>
 </template>
@@ -45,6 +41,14 @@ export default {
     }
   },
   methods: {
+    verifyData(){
+      if (this.user.firstname && this.user.lastname && this.user.email && this.user.gender && this.user.dateOfBirth) {
+        this.saveUser()
+      } else {
+        alert("Tous les champs ne sont pas remplis il faut obligatoirement les remplir si vous voulez jouer")
+      }
+    },
+
     saveUser(){
       let data = {
         firstname: this.user.firstname,
@@ -52,10 +56,6 @@ export default {
         email: this.user.email,
         gender: this.user.gender,
         dateOfBirth:this.user.dateOfBirth,
-        zipCode:this.user.zipCode,
-        nationality:this.user.nationality,
-        city:this.user.city,
-        street:this.user.street
       }
       localStorage.setItem("userData", JSON.stringify(data))
       console.log(data)
@@ -63,6 +63,7 @@ export default {
           .then(response=>{
             console.log(response)
             localStorage.setItem("userId", response.data.id);
+            this.$router.push("game")
           } )
           .catch(errors=>console.log(errors))
     }

@@ -1,10 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/game">Game</router-link>|
-      <router-link to="/info">Info</router-link>
+
     </div>
     <router-view/>
   </div>
@@ -34,9 +31,7 @@ blanc et noir */
   text-decoration: none;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+
 
 *{
   -webkit-user-select: none; /* Safari */
