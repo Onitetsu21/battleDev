@@ -431,12 +431,14 @@ export default {
             localStorage.setItem("bonusActive", false);
         }
 
+
         // Display end game Modal
         //TODO condition fin de jeu pour affichage finalMessage ??
         if (this.allResources[13].obtained > 0 && this.finalMessageDisplayed === false) {
             this.openModal(Assessment, {msg: "BRAVO !!!"});
             this.finalMessageDisplayed = true;
         }
+
     },
 
     methods: {
