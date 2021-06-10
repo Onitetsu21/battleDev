@@ -264,12 +264,18 @@ export default {
                 },
                 {
                     title: "Quelle est votre orientation sexuelle ?",
-                    options: ["bi", "hétérosexuel(le)", "homosexuel(le)"],
+                    options: [
+                      "bi",
+                      "hétérosexuel(le)",
+                      "homosexuel(le)",
+                      "asexuel(le)",
+                      "pansexuel(le)"
+                    ],
                     type: "select",
                     questionLabel: "sexualOrientation",
                 },
                 {
-                    title: "Combien avez-vous d' ?",
+                    title: "Combien avez-vous d'enfants ?",
                     options: [
                         "0",
                         "1",
