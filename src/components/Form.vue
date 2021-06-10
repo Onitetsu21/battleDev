@@ -108,15 +108,20 @@ input, select{
 /*    background-color: #663399FF;*/
 /*}*/
 button {
-    background-color: #6348FFFF;
+    background: rgb(0,113,251);
+    background: linear-gradient(43deg, rgba(0,113,251,1) 0%, rgba(0,217,255,1) 100%); 
     color: white;
     padding: 10px;
     border: none;
     margin-bottom: 10px;
+    -webkit-box-shadow: 5px 5px 15px -2px rgba(0,0,0,0.2); 
+    box-shadow: 5px 5px 15px -2px rgba(0,0,0,0.2);
 }
 
 button:active{
-  background-color: rgb(59, 24, 255);
+  background: rgb(0,113,251);
   border: 2px white solid;
+  -webkit-box-shadow: none; 
+  box-shadow: none;
 }
 </style>
