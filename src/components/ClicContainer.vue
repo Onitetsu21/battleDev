@@ -166,13 +166,13 @@ export default {
             storage: false,
             allBonusQuestions: [
                 {
-                    title: "avez-vous une maison",
+                    title: "Vivez-vous en maison ?",
                     options: ["oui", "non"],
                     type: "select",
                     questionLabel: "housing",
                 },
                 {
-                    title: "Combien de voiture avez-vous ?",
+                    title: "Combien de voitures avez-vous ?",
                     options: [
                         "0",
                         "1",
@@ -195,27 +195,27 @@ export default {
                     questionLabel: "numberOfVehicles",
                 },
                 {
-                    title: "Quel est le fournisseur de votre accee internet",
+                    title: "Quel est votre fournisseur d'accès à internet ?",
                     type: "input",
                     questionLabel: "internetServiceProvider",
                 },
                 {
-                    title: "Quel est le fournisseur de votre forfait mobile",
+                    title: "Quel est votre fournisseur de forfait mobile ?",
                     type: "input",
                     questionLabel: "mobileOperator",
                 },
                 {
-                    title: "Quel est chaine de sport étent vous abonner",
+                    title: "A quelle chaînes de sport êtes-vous abonnés ?",
                     type: "input",
                     questionLabel: "subscribesToSportChannels",
                 },
                 {
-                    title: "Comment se nomme votre religion",
+                    title: "Quel est le nom de votre religion ?",
                     type: "input",
                     questionLabel: "religions",
                 },
                 {
-                    title: "Combien avez-vous de frère et soeur",
+                    title: "Combien avez-vous de frères et soeurs ?",
                     options: [
                         "0",
                         "1",
@@ -238,12 +238,12 @@ export default {
                     questionLabel: "numberOfSiblings",
                 },
                 {
-                    title: "Quel est votre status civil",
+                    title: "Quel est votre statut civil ?",
                     options: [
-                        "célib",
+                        "célibat",
                         "union libre",
                         "pacs",
-                        "marier",
+                        "mariage",
                         "polyamour",
                         "trouple",
                         "autre",
@@ -252,13 +252,13 @@ export default {
                     questionLabel: "civilStatus",
                 },
                 {
-                    title: "Quel est votre orientation sexule",
-                    options: ["bi", "hétérosexuel", "hommosexuel"],
+                    title: "Quelle est votre orientation sexuelle ?",
+                    options: ["bi", "hétérosexuel(le)", "homosexuel(le)"],
                     type: "select",
                     questionLabel: "sexualOrientation",
                 },
                 {
-                    title: "Combien avez-vous d'enfant",
+                    title: "Combien avez-vous d' ?",
                     options: [
                         "0",
                         "1",
@@ -281,7 +281,7 @@ export default {
                     questionLabel: "numberOfChildren",
                 },
                 {
-                    title: "combien avez-vous d'animeau de compagnie",
+                    title: "Combien avez-vous d'animaux de compagnie ?",
                     options: [
                         "0",
                         "1",
@@ -304,7 +304,7 @@ export default {
                     questionLabel: "numberOfPets",
                 },
                 {
-                    title: "Avez-vous étais vacciné du covid 19",
+                    title: "Avez-vous été vacciné contre le Covid-19 ?",
                     options: ["Oui", "Non"],
                     type: "select",
                     questionLabel: "covidVaccinated",
@@ -316,71 +316,71 @@ export default {
                     questionLabel: "drinklAlcool",
                 },
                 {
-                    title: "Fumez-vous du tabac",
+                    title: "Fumez-vous du tabac ?",
                     options: ["Oui", "Non"],
                     type: "select",
                     questionLabel: "smokesTobacco",
                 },
                 {
-                    title: "lisez-vous des revus sportif",
+                    title: "Lisez-vous des revues sportives ?",
                     options: ["Oui", "Non"],
                     type: "select",
                     questionLabel: "readsSportPress",
                 },
                 {
-                    title: "regardez-vous des émission sportif",
+                    title: "Regardez-vous des émissions sportives ?",
                     options: ["oui", "Non"],
                     type: "select",
                     questionLabel: "watchSportShow",
                 },
                 {
-                    title: "Faites-vous du sport",
+                    title: "Faites-vous du sport ?",
                     options: ["Oui", "Non"],
                     type: "select",
                     questionLabel: "doesSport",
                 },
                 {
-                    title: "Est-ce que vous jouez au foot",
+                    title: "Jouez-vous au foot ?",
                     options: ["Oui", "Non"],
                     type: "select",
                     questionLabel: "playsFootball",
                 },
                 {
-                    title: "Allez-vous au stade regerder des match",
+                    title: "Allez-vous au stade regarder des matchs ?",
                     options: ["oui", "Non"],
                     type: "select",
                     questionLabel: "goesToFootballStadium",
                 },
                 {
-                    title: "Quel est votre Club de foot préférée",
+                    title: "Quel est votre club de foot préféré",
                     type: "input",
                     questionLabel: "favouriteFootballClub",
                 },
                 {
-                    title: "Quel est votre équipe de foot préférée",
+                    title: "Quelle est votre équipe de foot préférée ?",
                     type: "input",
                     questionLabel: "favouriteFootballTeam",
                 },
                 {
-                    title: "Vous étes plutôt Rugby ou Foot",
+                    title: "Vous êtes plutôt Rugby ou Foot ?",
                     options: ["Rugby", "Foot"],
                     type: "select",
                     questionLabel: "prefersFootballOverRugby",
                 },
                 {
-                    title: "regardez-vous des match sur votre TV",
+                    title: "Regardez-vous des matchs sur votre TV ?",
                     options: ["oui", "Non"],
                     type: "select",
                     questionLabel: "watchesFootballOnTV",
                 },
                 {
-                    title: "regardez-vous des match sur votre Mobile",
+                    title: "Regardez-vous des matchs sur votre mobile ?",
                     options: ["oui", "Non"],
                     type: "select",
                     questionLabel: "watchesFootballOnMobilePhone",
                 },
                 {
-                    title: "regardez-vous des match via un navigateur web",
+                    title: "Regardez-vous des matchs via votre navigateur internet (Chrome, Firefox, Safari, etc) ?",
                     options: ["oui", "Non"],
                     type: "select",
                     questionLabel: "watchesFootballOnline",
