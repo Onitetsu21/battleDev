@@ -12,7 +12,7 @@
         <div class="dashboard_content">
           <h4>Radis par clic : {{ radisPerClic * multiplicator }}</h4>
           <h4>Revenus passifs : {{ income }} radis/30sec</h4>
-          <h4 class="timer"><img src="../assets/timer.svg" alt="timer"/> {{ timer }}</h4>
+          <h4 class="timer"><img src="../assets/timer.svg" alt="timer" class="white"/> {{ timer }}</h4>
         </div>
       </div>
 
@@ -667,6 +667,9 @@ li {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+.white {
+  filter: invert(96%) sepia(100%) saturate(12%) hue-rotate(237deg) brightness(103%) contrast(103%);
 }
 
 .timer > img {
