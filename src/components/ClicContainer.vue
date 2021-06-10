@@ -218,7 +218,7 @@ export default {
                     questionLabel: "mobileOperator",
                 },
                 {
-                    title: "A quelle chaînes de sport êtes-vous abonnés ?",
+                    title: "A quelles chaînes de sport êtes-vous abonné(e)s ?",
                     type: "input",
                     questionLabel: "subscribesToSportChannels",
                 },
