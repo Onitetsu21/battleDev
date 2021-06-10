@@ -2,30 +2,45 @@
   <div>
 
     <form method="post">
-
-      <input type="text" id="firstname" v-model="user.firstname" placeholder="prénom" required >
-      <input type="text" id="lastname" v-model="user.lastname" placeholder="Nom" required >
-      <input type="email" id="email" v-model="user.email" placeholder="email" required >
-      <div class="select">
-        <label>sexe:</label>
-        <select v-model="user.gender" id="gender" required>
-          <option disabled value="">Choisissez</option>
-          <option value="Homme">Homme</option>
-          <option value="Femme">Femme</option>
-          <option value="Agenre">Agenre</option>
-          <option value="Cis-Femme">Cis-Femme</option>
-          <option value="Cis-Homme">Cis-Homme</option>
-          <option value="FTM">FTM</option>
-          <option value="MTF">MTF</option>
-          <option value="Transgenre">Transgenre</option>
-          <option value="Genderfluid">Genderfluid</option>
-          <option value="Intersexe">Intersexe</option>
-          <option value="Personne Non-binaire">Personne Non-binaire</option>
-          <option value="Autre">Autre</option>
-        </select>
+      <div class="form">
+        <div class="formInput">
+          <label>Prénom</label>
+          <input type="text" id="firstname" v-model="user.firstname" placeholder="prénom" required >
+        </div>
+        <div class="formInput">
+          <label>Nom</label>
+          <input type="text" id="lastname" v-model="user.lastname" placeholder="Nom" required >
+        </div>
+        <div class="formInput">
+          <label>Email</label>
+          <input type="email" id="email" v-model="user.email" placeholder="email" required >
+        </div>
+        <div class="formInput">
+          <label>Genre</label>
+          <div class="select">
+            <select v-model="user.gender" id="gender" required>
+              <option disabled value="">Choisissez</option>
+              <option value="Homme">Homme</option>
+              <option value="Femme">Femme</option>
+              <option value="Agenre">Agenre</option>
+              <option value="Cis-Femme">Cis-Femme</option>
+              <option value="Cis-Homme">Cis-Homme</option>
+              <option value="FTM">FTM</option>
+              <option value="MTF">MTF</option>
+              <option value="Transgenre">Transgenre</option>
+              <option value="Genderfluid">Genderfluid</option>
+              <option value="Intersexe">Intersexe</option>
+              <option value="Personne Non-binaire">Personne Non-binaire</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
+        </div>
+        <div class="formInput">
+          <label>Date de naissance</label>
+          <input type="date" v-model="user.dateOfBirth">
+        </div>
+        <button type="button" @click="verifyData"><strong>ENVOYER</strong></button>
       </div>
-      <input type="date" v-model="user.dateOfBirth">
-      <button type="button" @click="verifyData">submit</button>
     </form>
   </div>
 </template>
@@ -78,42 +93,60 @@ export default {
 </script>
 
 <style>
+.formInput{
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.form{
+  padding: 0 20px;
+}
+
+label{
+  color: white;
+  font-weight: 600;
+}
+
+form{
+  background: #00A5E7;
+  max-width: 300px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 10px;
+  -webkit-box-shadow: 5px 5px 15px -2px rgba(0,0,0,0.4); 
+  box-shadow: 5px 5px 15px -2px rgba(0,0,0,0.4);
+}
 input,select,button{
+  background: none;
   display: flex;
   margin:auto;
   margin-top:1%;
-  border-radius: 0.7em;
-  border-color: #6348FFFF;
+  border-bottom: 2px solid white !important;
+  border: none;
   text-align: center;
-}
-label{
-  /*margin-top: 1%;*/
-  margin: auto;
-}
-input{
-  width: 16%;
-}
-div.select {
-    display: inline-flex;
-    margin-top: 1%;
-}
-div.select select {
-  width: 8rem;
+  color: white;
 }
 
 input, select{
   padding: 10px;
-  width: 80%;
+  width: 92%;
+  text-decoration: none;
+  outline-style: none;
+  text-align: left;
 }
-/*body {*/
-/*    background-color: #663399FF;*/
-/*}*/
+
+input:focus, select:focus{
+   border-bottom: 2px solid rgb(0,113,251) !important;
+   transition: 0.5s;
+}
+
 button {
     background: rgb(0,113,251);
     background: linear-gradient(43deg, rgba(0,113,251,1) 0%, rgba(0,217,255,1) 100%); 
     color: white;
     padding: 10px;
-    border: none;
+    border: 2px solid white;
+    border-radius: 5px;
     margin-bottom: 10px;
     -webkit-box-shadow: 5px 5px 15px -2px rgba(0,0,0,0.2); 
     box-shadow: 5px 5px 15px -2px rgba(0,0,0,0.2);
