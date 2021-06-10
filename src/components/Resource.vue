@@ -60,7 +60,7 @@ export default {
 
 .resourcesContent {
     background: rgb(0,113,251);
-    background: linear-gradient(43deg, rgba(0,113,251,1) 0%, rgba(0,217,255,1) 100%); 
+    background: linear-gradient(43deg, rgba(0,113,251,1) 0%, #00A5E7 100%); 
     border-radius: 5px;
     margin: auto;
     color: white;
