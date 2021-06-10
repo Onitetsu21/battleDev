@@ -4,7 +4,7 @@
       <div class="form">
         <div class="formInput">
           <label>Prénom</label>
-          <input type="text" id="firstname" v-model="user.firstname" placeholder="prénom" required >
+          <input type="text" id="firstname" v-model="user.firstname" placeholder="Prénom" required >
         </div>
 
         <div class="formInput">
@@ -14,7 +14,7 @@
 
         <div class="formInput">
           <label>Email</label>
-          <input type="email" id="email" v-model="user.email" placeholder="email" required >
+          <input type="email" id="email" v-model="user.email" placeholder="Email" required >
         </div>
 
         <div class="formInput">

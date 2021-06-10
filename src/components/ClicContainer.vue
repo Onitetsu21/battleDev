@@ -12,7 +12,7 @@
         <div class="dashboard_content">
           <h4>Radis par clic : {{ radisPerClic * multiplicator }}</h4>
           <h4>Revenus passifs : {{ income }} radis/30sec</h4>
-          <h4 class="timer"><img src="../assets/timer.svg" alt="timer"/> {{ timer }}</h4>
+          <h4 class="timer"><img src="../assets/timer.svg" alt="timer" class="white"/> {{ timer }}</h4>
         </div>
       </div>
 
@@ -184,14 +184,14 @@ export default {
             "un camping-car",
             "une cabane dans les arbres",
             "une péniche",
-            "sans domicile fixe",
+            "la rue",
             "autre"
           ],
           type: "select",
           questionLabel: "housing",
         },
         {
-          title: "Combien de voitures avez-vous ?",
+          title: "Combien de voitures possédez-vous ?",
           options: [
             "0",
             "1",
@@ -199,33 +199,24 @@ export default {
             "3",
             "4",
             "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
           ],
           type: "select",
           questionLabel: "numberOfVehicles",
         },
         {
-          title: "Quel est votre fournisseur d'accès à internet ?",
+          title: "Qui est votre fournisseur d'accès à internet ?",
           type: "input",
           questionLabel: "internetServiceProvider",
         },
         {
-          title: "Quel est votre fournisseur de forfait mobile ?",
+          title: "Qui est votre opérateur téléphonique ?",
           type: "input",
           questionLabel: "mobileOperator",
         },
         {
-          title: "A quelles chaînes de sport êtes-vous abonné(e)s ?",
-          type: "input",
+          title: "Êtes-vous abonné à des chaînes TV sportives ?",
+          options: ["Oui", "Non"],
+          type: "select",
           questionLabel: "subscribesToSportChannels",
         },
         {
@@ -246,12 +237,7 @@ export default {
             "7",
             "8",
             "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
+            "10"
           ],
           type: "select",
           questionLabel: "numberOfSiblings",
@@ -273,7 +259,7 @@ export default {
         {
           title: "Quelle est votre orientation sexuelle ?",
           options: [
-            "bi",
+            "bisexuel(le)",
             "hétérosexuel(le)",
             "homosexuel(le)",
             "asexuel(le)",
@@ -296,11 +282,6 @@ export default {
             "8",
             "9",
             "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
           ],
           type: "select",
           questionLabel: "numberOfChildren",
@@ -319,11 +300,6 @@ export default {
             "8",
             "9",
             "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
           ],
           type: "select",
           questionLabel: "numberOfPets",
@@ -347,7 +323,7 @@ export default {
           questionLabel: "smokesTobacco",
         },
         {
-          title: "Lisez-vous des revues sportives ?",
+          title: "Lisez-vous la presse sportive ?",
           options: ["Oui", "Non"],
           type: "select",
           questionLabel: "readsSportPress",
@@ -371,7 +347,7 @@ export default {
           questionLabel: "playsFootball",
         },
         {
-          title: "Allez-vous au stade regarder des matchs ?",
+          title: "Allez-vous au stade assister aux matchs ?",
           options: ["oui", "Non"],
           type: "select",
           questionLabel: "goesToFootballStadium",
@@ -505,7 +481,6 @@ export default {
       for (let resource of this.allResources) {
         if (resource.name == name) {
           resource.obtained++;
-          console.log(resource.name);
         }
       }
     },
@@ -525,7 +500,6 @@ export default {
     },
 
     restart() {
-      console.log("avant: ", this.storage);
       if (this.storage) {
         localStorage.removeItem("budget");
         localStorage.removeItem("allResources");
@@ -537,7 +511,6 @@ export default {
       } else {
         this.storage = true;
       }
-      console.log("après:", this.storage);
     },
 
     timeSinceLastConnection(date1, date2) {
@@ -555,7 +528,6 @@ export default {
 
       tmp = Math.floor((tmp - diff.hour) / 24); // Nombre de jours restants
       diff.day = tmp;
-      console.log(diff);
       let totalSec = diff.sec + diff.min * 60 + diff.hour * 3600 + diff.day * 86400;
 
       return totalSec;
@@ -563,7 +535,6 @@ export default {
 
     timeBonus(sec) {
       let totalBonus = Math.round(sec * (this.income / this.incomeRate));
-      console.log("totalBonus", totalBonus);
 
       this.budget += totalBonus;
       window.alert("En votre absence vous avez gagné : " + totalBonus + " radis");
@@ -667,6 +638,9 @@ li {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+.white {
+  filter: invert(96%) sepia(100%) saturate(12%) hue-rotate(237deg) brightness(103%) contrast(103%);
 }
 
 .timer > img {

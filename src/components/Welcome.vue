@@ -18,6 +18,8 @@ export default {
 <style scoped>
 .container {
   padding: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
 .images {
