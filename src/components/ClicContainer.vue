@@ -6,7 +6,7 @@
         </button>
         <div @click="clic" class="clicScreen">
             <div class="dashboard">
-                <h1>Budget : {{ budget }} Radis</h1>
+                <h1 class="gradient-text">Budget : {{ budget }} Radis</h1>
                 <div class="dashboard_content">
                     <h4>Radis par clic : {{ radisPerClic * multiplicator }}</h4>
                     <h4>Revenus passifs : {{ income }} radis/30sec</h4>
@@ -668,6 +668,26 @@ li {
 
 .dashboard{
     margin-bottom: 20px;
+}
+
+.gradient-text {
+  background: white;
+  color: black;
+  display: inline-block;
+  position: relative;
+}
+
+.gradient-text::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: -webkit-linear-gradient(left, #0071FB, #00D9FF);
+  background: linear-gradient(to right, #0071FB, #00D9FF);
+  content: '';
+  display: block;
+  mix-blend-mode: screen;
 }
 
 
