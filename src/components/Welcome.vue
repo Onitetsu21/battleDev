@@ -4,7 +4,7 @@
     <p class="dark-blue">Veuillez remplir ce petit formulaire pour accéder au jeu :</p>
     <p class="dark-blue"><strong>Investissez des Radis avec AliPay et gagnez l'EURO2020 !!!</strong></p>
     <div class="images">
-      <img class="logo-euro" src="../assets/euro2020.png" alt="logo de l'EURO2020">
+      <img class="logo-euro" src="../assets/euro2020.webp" alt="logo de l'EURO2020">
     </div>
   </div>
 </template>
