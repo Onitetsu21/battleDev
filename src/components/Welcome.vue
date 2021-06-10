@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <h1 class="gradient-text">Bienvenue sur AliPay tes Radis !!!</h1>
+    <br />
     <p class="gradient-text">Veuillez remplir ce petit formulaire pour accéder au jeu :</p>
+    <br />
     <p class="gradient-text"><strong>Investissez des Radis avec AliPay et gagnez l'EURO2020 !!!</strong></p>
     <div class="images">
       <img class="logo-euro" src="../assets/euro2020.webp" alt="logo de l'EURO2020">
