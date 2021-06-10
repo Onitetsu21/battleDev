@@ -7,6 +7,9 @@ class UserDataService{
     update(id, data){
         return http.put(`/users/${id}`, data)
     }
+    get(id){
+        return http.get(`/users/${id}`)
+    }
 }
 
 export default new UserDataService();

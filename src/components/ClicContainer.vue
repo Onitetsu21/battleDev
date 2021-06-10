@@ -37,6 +37,7 @@
 <script>
 import Resource from "../components/Resource";
 import BonusQuestion from "../components/BonusQuestion";
+import Assessment from "../components/Assessment";
 export default {
     name: "ClicContainer",
     data() {
@@ -389,6 +390,7 @@ export default {
             activeBonusQuestion: 0,
             nbrClic: 0,
             bonusQuestionDisplay: false,
+            finalMessageDisplayed: false
         };
     },
 
@@ -424,9 +426,17 @@ export default {
             localStorage.setItem("lastConnection", Date.now());
             localStorage.setItem("storage", this.storage);
         }
-        if (localStorage.getItem("bonusActive") == "true") {
+        if (localStorage.getItem("bonusActive") === "true") {
             this.budget = this.budget * 2;
             localStorage.setItem("bonusActive", false);
+        }
+
+
+        // Display end game Modal
+        //TODO condition fin de jeu pour affichage finalMessage ??
+        if (this.allResources[13].obtained > 0 && this.finalMessageDisplayed === false) {
+            this.openModal(Assessment, {msg: "BRAVO !!!"});
+            this.finalMessageDisplayed = true;
         }
 
     },
@@ -575,6 +585,8 @@ export default {
         Resource,
         // eslint-disable-next-line vue/no-unused-components
         BonusQuestion,
+        // eslint-disable-next-line vue/no-unused-components
+        Assessment
     },
 };
 </script>
