@@ -27,7 +27,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (to.name === 'Game' && !JSON.parse(localStorage.getItem("userData"))) {
     next({
-      path:'/info',
+      path:'/',
       query: {redirect: to.fullPath}
     })
   } else if (to.name === 'Info' && JSON.parse(localStorage.getItem("userData"))) {
