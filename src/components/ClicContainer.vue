@@ -5,11 +5,13 @@
             <span v-else> Non </span>
         </button>
         <div @click="clic" class="clicScreen">
-            <h1>Budget : {{ budget }} Radis</h1>
-            <h4>radis par clic : {{ radisPerClic * multiplicator }}</h4>
-            <h4>Revenus passifs : {{ income }}</h4>
-            <h4>Timer : {{ timer }}</h4>
-            <button v-if="bonusQuestionDisplay" @click="displayBonusQuestion">
+            <div class="dashboard">
+                <h1>Budget : {{ budget }} Radis</h1>
+                <h4>radis par clic : {{ radisPerClic * multiplicator }}</h4>
+                <h4>Revenus passifs : {{ income }} radis/30sec</h4>
+                <h4>Timer : {{ timer }}</h4>
+            </div>
+            <button class="bonusBtn" v-if="bonusQuestionDisplay" @click="displayBonusQuestion">
                 Multiplier vos radis par 2 !
             </button>
             <div
@@ -615,6 +617,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: start;
+    align-items: center;
 }
 
 li {
@@ -634,5 +637,15 @@ li {
     flex-direction: column;
     align-items: center;
     margin: 10px;
+}
+
+.bonusBtn{
+ background: rgb(221,152,0);
+background: linear-gradient(357deg, rgba(221,152,0,1) 0%, rgba(255,222,0,1) 100%); 
+font-size: 20px;
+}
+
+.bonusBtn:active{
+    background: rgba(221,152,0,1);
 }
 </style>
