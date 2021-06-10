@@ -1,11 +1,5 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/game">Game</router-link>|
-      <router-link to="/info">Info</router-link>
-    </div>
     <router-view/>
   </div>
 </template>
@@ -38,17 +32,17 @@ blanc et noir */
   color: #42b983;
 }
 
-*{
+* {
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
 }
 
-.centerTitle{
+.centerTitle {
   text-align: center;
 }
 
-body{
+body {
   margin: 0;
 }
 </style>
