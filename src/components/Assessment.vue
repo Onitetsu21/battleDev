@@ -54,7 +54,6 @@ export default {
           // eslint-disable-next-line no-undef
           .then((response) => {
             this.userData = response.data
-            console.log("userData : ", this.userData)
           })
           .catch((errors) => console.log(errors))
     },
