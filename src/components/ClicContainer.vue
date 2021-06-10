@@ -77,7 +77,7 @@ export default {
                     addToClick: "15",
                     multiplicator: 15,
                     obtained: 0,
-                    displayed: true,
+                    displayed: false,
 
                 },
                 {
@@ -86,7 +86,7 @@ export default {
                     addToClick: "20",
                     multiplicator: 20,
                     obtained: 0,
-                    displayed: true,
+                    displayed: false,
 
                 },
                 {
@@ -104,7 +104,7 @@ export default {
                     addToClick: "30",
                     multiplicator: 30,
                     obtained: 0,
-                    displayed: true,
+                    displayed: false,
                 },
                 {
                     name: "Equipe de L2",
@@ -227,21 +227,6 @@ export default {
             this.budget = this.budget * 2;
             localStorage.setItem("bonusActive", false);
         }
-        this.displayed(this.allResources[1], this.allResources[0], 11)
-        this.displayed(this.allResources[2], this.allResources[1], 1)
-        this.displayed(this.allResources[3], this.allResources[2], 1)
-        this.displayed(this.allResources[4], this.allResources[3], 1)
-        this.displayed(this.allResources[5], this.allResources[4], 1)
-        this.displayed(this.allResources[6], this.allResources[5], 1)
-        this.displayed(this.allResources[7], this.allResources[6], 1)
-        this.displayed(this.allResources[8], this.allResources[7], 1)
-        this.displayed(this.allResources[9], this.allResources[8], 1)
-        this.displayed(this.allResources[10], this.allResources[9], 1)
-        this.displayed(this.allResources[11], this.allResources[10], 1)
-        this.displayed(this.allResources[12], this.allResources[11], 1)
-        this.displayed(this.allResources[13], this.allResources[12], 5)
-        this.displayed(this.allResources[14], this.allResources[13], 1)
-
 
     },
 
@@ -253,6 +238,19 @@ export default {
                 this.nbrClic = 0
                 this.bonusQuestionDisplay = true
             }
+            this.displayed(this.allResources[1], this.allResources[0], 11)
+            this.displayed(this.allResources[2], this.allResources[1], 1)
+            this.displayed(this.allResources[3], this.allResources[2], 1)
+            this.displayed(this.allResources[4], this.allResources[3], 1)
+            this.displayed(this.allResources[5], this.allResources[4], 1)
+            this.displayed(this.allResources[6], this.allResources[5], 1)
+            this.displayed(this.allResources[7], this.allResources[6], 1)
+            this.displayed(this.allResources[8], this.allResources[7], 1)
+            this.displayed(this.allResources[9], this.allResources[8], 1)
+            this.displayed(this.allResources[10], this.allResources[9], 1)
+            this.displayed(this.allResources[11], this.allResources[10], 1)
+            this.displayed(this.allResources[12], this.allResources[11], 5)
+            this.displayed(this.allResources[13], this.allResources[12], 1)
         },
 
         buyResource(cost) {
