@@ -55,10 +55,16 @@ export default {
             let data = {
                 [ql] : res
             }
+            let question = {
+                [this.title] : res
+            }
+            let questions = JSON.parse(localStorage.getItem("questions"));
+            let allQuestions = Object.assign({}, question, questions);
             let userId = parseInt(localStorage.getItem("userId"));
             this.validate = true;
             let userData = JSON.parse(localStorage.getItem("userData"))
             let allUserData = Object.assign({}, data, userData)
+            localStorage.setItem("questions", JSON.stringify(allQuestions))
             localStorage.setItem("userData", JSON.stringify(allUserData))
             console.log(allUserData);
             localStorage.setItem("bonusActive", true);
