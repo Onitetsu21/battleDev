@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>{{ msg }}</h1>
+  <div class="assessment">
+    <h1 class="centerTitle">{{ msg }}</h1>
     <p>Pour pouvoir jouer, vous nous avez donné les informations suivantes : </p>
     <ul>
       <li>Prénom : {{ userData.firstname }}</li>
@@ -59,5 +59,7 @@ export default {
 </script>
 
 <style scoped>
-
+.assessment{
+  padding: 50px;
+}
 </style>
