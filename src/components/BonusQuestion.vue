@@ -63,7 +63,6 @@ export default {
       let allUserData = Object.assign({}, data, userData)
       localStorage.setItem("questions", JSON.stringify(allQuestions))
       localStorage.setItem("userData", JSON.stringify(allUserData))
-      console.log(allUserData);
       localStorage.setItem("bonusActive", true);
       UserDataService.update(userId, allUserData)
           .then((response) => console.log(response))
