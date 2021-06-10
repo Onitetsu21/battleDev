@@ -108,7 +108,7 @@ label{
 }
 
 form{
-  background: #00A5E7;
+  background: linear-gradient(43deg, rgba(0,113,251,1) 0%, rgba(0,217,255,1) 100%);
   max-width: 300px;
   margin: auto;
   padding: 30px;
