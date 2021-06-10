@@ -1,20 +1,22 @@
 <template>
   <div>
-
     <form method="post">
       <div class="form">
         <div class="formInput">
           <label>Prénom</label>
           <input type="text" id="firstname" v-model="user.firstname" placeholder="prénom" required >
         </div>
+
         <div class="formInput">
           <label>Nom</label>
           <input type="text" id="lastname" v-model="user.lastname" placeholder="Nom" required >
         </div>
+
         <div class="formInput">
           <label>Email</label>
           <input type="email" id="email" v-model="user.email" placeholder="email" required >
         </div>
+
         <div class="formInput">
           <label>Genre</label>
           <div class="select">
@@ -35,10 +37,12 @@
             </select>
           </div>
         </div>
+
         <div class="formInput">
           <label>Date de naissance</label>
           <input type="date" v-model="user.dateOfBirth">
         </div>
+
         <button type="button" @click="verifyData"><strong>ENVOYER</strong></button>
       </div>
     </form>
@@ -49,7 +53,6 @@
 import UserDataService from "@/services/UserDataService";
 export default {
   name: "Form",
-  // props: {},
   data() {
     return {
       user:[]
@@ -60,7 +63,7 @@ export default {
       if (this.user.firstname && this.user.lastname && this.user.email && this.user.gender && this.user.dateOfBirth) {
         this.saveUser()
       } else {
-        alert("Tous les champs ne sont pas remplis il faut obligatoirement les remplir si vous voulez jouer")
+        alert("Veuillez remplir tous les champs pour pouvoir accéder au jeu.")
       }
     },
 
@@ -88,8 +91,6 @@ export default {
     UserDataService
   }
 }
-
-
 </script>
 
 <style>
@@ -116,6 +117,7 @@ form{
   -webkit-box-shadow: 5px 5px 15px -2px rgba(0,0,0,0.4); 
   box-shadow: 5px 5px 15px -2px rgba(0,0,0,0.4);
 }
+
 input,select,button{
   background: none;
   display: flex;
@@ -140,20 +142,20 @@ input, select{
 }
 
 input:focus, select:focus{
-   border-bottom: 2px solid rgb(0,113,251) !important;
-   transition: 0.5s;
+  border-bottom: 2px solid rgb(0,113,251) !important;
+  transition: 0.5s;
 }
 
 button {
-    background: rgb(0,113,251);
-    background: linear-gradient(43deg, rgba(0,113,251,1) 0%, rgba(0,217,255,1) 100%); 
-    color: white;
-    padding: 10px;
-    border: 2px solid white;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    -webkit-box-shadow: 5px 5px 15px -2px rgba(0,0,0,0.2); 
-    box-shadow: 5px 5px 15px -2px rgba(0,0,0,0.2);
+  background: rgb(0,113,251);
+  background: linear-gradient(43deg, rgba(0,113,251,1) 0%, rgba(0,217,255,1) 100%);
+  color: white;
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 5px 5px 15px -2px rgba(0,0,0,0.2);
+  box-shadow: 5px 5px 15px -2px rgba(0,0,0,0.2);
 }
 
 button:active{

@@ -8,17 +8,20 @@
 </template>
 <script>
 import Nav from './components/Nav';
+
 export default {
   components: {
-        Nav
-    }
+    Nav
+  }
 }
+
 </script>
 <style>
-/* 
-bleu claire : #00D9FF
+/*  -- CHARTE GRAPHIQUE --
+bleu clair : #00D9FF
 bleu foncé : #0071FB
-blanc et noir */
+blanc et noir
+Police: Avenir, Helvetica, Arial, sans-serif*/
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -38,19 +41,17 @@ blanc et noir */
   text-decoration: none;
 }
 
-
-
-*{
+* {
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
 }
 
-.centerTitle{
+.centerTitle {
   text-align: center;
 }
 
-body{
+body {
   margin: 0;
 }
 </style>
