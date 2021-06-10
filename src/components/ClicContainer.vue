@@ -1,4 +1,4 @@
-<template lang="">
+<template>
     <div>
         <button class="btn" @click="restart">
             Sauvegarder la partie : <span v-if="storage"> Oui </span>
@@ -10,7 +10,7 @@
                 <div class="dashboard_content">
                     <h4>Radis par clic : {{ radisPerClic * multiplicator }}</h4>
                     <h4>Revenus passifs : {{ income }} radis/30sec</h4>
-                    <h4>Timer : {{ timer }}</h4>
+                    <h4 class="timer"> <img src="../assets/timer.svg" alt="timer"/> {{ timer }}</h4>
                 </div>
                 
             </div>
@@ -668,6 +668,17 @@ li {
 
 .dashboard{
     margin-bottom: 20px;
+}
+
+
+.timer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.timer > img {
+  width: 30px;
 }
 
 .gradient-text {
