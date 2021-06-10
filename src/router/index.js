@@ -38,4 +38,20 @@ const router = new VueRouter({
   routes
 })
 
+router.beforeEach((to, from, next) => {
+  if (to.name === 'Game' && !JSON.parse(localStorage.getItem("userData"))) {
+    next({
+      path:'/info',
+      query: {redirect: to.fullPath}
+    })
+  } else if (to.name === 'Info' && JSON.parse(localStorage.getItem("userData"))) {
+    next({
+      path:'/game',
+      query: {redirect: to.fullPath}
+    })
+  } else {
+    next()
+  }
+})
+
 export default router
