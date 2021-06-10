@@ -127,6 +127,10 @@ input,select,button{
   color: white;
 }
 
+button{
+  border: none !important;
+}
+
 input, select{
   padding: 10px;
   width: 92%;

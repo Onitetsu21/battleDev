@@ -7,9 +7,12 @@
         <div @click="clic" class="clicScreen">
             <div class="dashboard">
                 <h1>Budget : {{ budget }} Radis</h1>
-                <h4>radis par clic : {{ radisPerClic * multiplicator }}</h4>
-                <h4>Revenus passifs : {{ income }} radis/30sec</h4>
-                <h4>Timer : {{ timer }}</h4>
+                <div class="dashboard_content">
+                    <h4>Radis par clic : {{ radisPerClic * multiplicator }}</h4>
+                    <h4>Revenus passifs : {{ income }} radis/30sec</h4>
+                    <h4>Timer : {{ timer }}</h4>
+                </div>
+                
             </div>
             <button class="bonusBtn" v-if="bonusQuestionDisplay" @click="displayBonusQuestion">
                 Multiplier vos radis par 2 !
@@ -640,12 +643,32 @@ li {
 }
 
 .bonusBtn{
- background: rgb(221,152,0);
-background: linear-gradient(357deg, rgba(221,152,0,1) 0%, rgba(255,222,0,1) 100%); 
-font-size: 20px;
+    background: rgb(221,152,0);
+    background: linear-gradient(357deg, rgba(221,152,0,1) 0%, rgba(255,222,0,1) 100%); 
+    font-size: 20px;
 }
 
 .bonusBtn:active{
     background: rgba(221,152,0,1);
 }
+
+.dashboard_content{
+    background: #00A5E7;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    -webkit-box-shadow: 5px 5px 15px -2px rgba(0,0,0,0.2); 
+    box-shadow: 5px 5px 15px -2px rgba(0,0,0,0.2);
+}
+.dashboard_content > h4{
+    margin: auto 20px;
+}
+
+.dashboard{
+    margin-bottom: 20px;
+}
+
+
 </style>
