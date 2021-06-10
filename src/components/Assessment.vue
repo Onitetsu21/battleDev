@@ -1,7 +1,7 @@
 <template>
   <div class="assessment">
     <h1 class="centerTitle">{{ msg }}</h1>
-    <p>Pour pouvoir jouer à AliPay tes Radis, vous nous avez donné les informations suivantes : </p>
+    <p>Pour pouvoir jouer à <strong>AliPay tes Radis</strong>, vous nous avez donné les informations suivantes : </p>
     <ul>
       <li>Prénom : {{ userData.firstname }}</li>
       <li>Nom : {{ userData.lastname }}</li>
